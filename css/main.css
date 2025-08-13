@@ -42,7 +42,7 @@
 
   --ease-slower: 0.75s ease;
   --ease-slow: 0.5s ease;
-  --ease-fast: 0.25s ease;
+  --ease-fast: 0.375s ease;
   --bouncy: 0.5s cubic-bezier(0.5, 1.6, 0.4, 0.7);
   --bouncy-timeless: cubic-bezier(0.5, 1.6, 0.4, 0.7);
 
@@ -96,7 +96,7 @@ html, body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -35%);
-  font-size: max(min(35vw, 65vh), 33rem);
+  font-size: max(min(40vw, 65vh), 27rem);
   width: 100%;
   letter-spacing: -2%;
   text-align: center;
@@ -245,7 +245,7 @@ nav a {
     linear-gradient(to right, var(--text), var(--text));
   background-size: 0% 1px;
   background-position: 0 100%;
-  transition: var(--bouncy);
+  transition: var(--ease-slow);
   background-repeat: no-repeat;
   padding-bottom: 4px;
 }
@@ -254,7 +254,7 @@ nav a {
   background: var(--gradient-text);
     background-size: 100% 1px;
     background-position: 100% 100%;
-	transition: var(--bouncy);
+	transition: var(--ease-fast);
   background-repeat: no-repeat;
 }
 
@@ -266,7 +266,7 @@ nav a {
   background: var(--gradient-background);
   background-size: 100% 1px;
   background-position: 100% 100%;
-	transition: var(--bouncy);
+	transition: var(--ease-fast);
   background-repeat: no-repeat;
 }
 
@@ -286,8 +286,8 @@ nav a {
 
 .hero img {
   width: 100%;
-  height: 84vh;
   object-fit: cover;
+  height: 82vh;
   padding-top: 5em;
 }
 
@@ -316,78 +316,6 @@ nav a {
 
 .flex img {
   width: 25em;
-}
-
-/* cards */
-
-.grid .container a {
-  display: flex;
-  gap: 2em;
-}
-
-.work img {
-  width: 100%;
-  object-fit: cover;
-}
-
-.work .card-text {
-  min-width: 27.5%;
-  max-width: 27.5%;
-}
-
-.work .card-text p {
-  max-width: 27ch;
-  margin-top: 0.875em;
-}
-
-.work .grid .container {
-  position: relative;
-  /* width: calc(50% - 0.75em); */
-  width: 100%;
-  overflow: hidden;
-  /* box-shadow: var(--medium-shadow); */
-  transition: var(--ease-slow);
-}
-
-.work .grid .container img {
-  transition: var(--ease-slow);
-}
-
-.image-container {
-  overflow: hidden;
-  transition: var(--ease-slow);
-  margin: 0 auto;
-  border-radius: 1em;
-  display: flex;
-}
-
-.hover-container:hover .image-container{
-  transform: scale(0.975) !important;
-}
-
-.hover-container:hover img {
-  transform: scale(1.0675);
-}
-
-.work .grid .upcoming {
-  cursor: not-allowed;
-}
-
-.hover-container {
-  opacity: 0;
-  transition: var(--ease-slower);
-  transform: translateY(3rem);
-}
-
-.hover-container.shown {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.always-shown {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-  transition: 0s !important;
 }
 
 /* accordions */
@@ -472,7 +400,7 @@ nav a {
   height: 100%;
   width: 0;
   z-index: -1;
-  transition: var(--ease-slow);
+  transition: var(--ease-fast);
   background-color: var(--background);
 }
 
@@ -518,7 +446,6 @@ nav input {
 
 .hero .container-large {
   padding: 0 0 3em 0;
-  max-width: 130em;
 }
 
 section .container {
@@ -574,15 +501,8 @@ section .container {
 }
 
 .grid a img {
+  display: block;
   margin: 0 auto;
-}
-
-.work .grid {
-  width: 100%;
-  display: flex;
-  gap: 2em;
-  flex-wrap: wrap;
-  padding-top: 1.75em;
 }
 
 .accordion-grid {
@@ -711,32 +631,23 @@ section .container {
   }
 }
 
-@media screen and (max-width: 60em) { /* medium-width devices: collapse work grid, introduce hamburger menu */
+@media screen and (min-width: 80em) {
+  .grid a {
+    flex-basis: 21%;
+  }
+}
 
-  /* section .container,
-  nav .container {
-    width: calc(100% - 4em);
-  } */
-
+@media screen and (max-width: 50em) { /* medium-width devices */
   .title {
     font-size: 35vw;
   }
 
   .hero img {
-    height: auto;
+    height: 65vh;
   }
 
   .grid .container a {
     flex-direction: column-reverse;
-  }
-
-  .work .card-text {
-    max-width:none;
-    min-width: 100%;
-  }
-
-  .work .card-text p {
-    max-width: 45ch;
   }
 
   .nav-links {
@@ -782,7 +693,7 @@ section .container {
   .nav-links li a {
     display: inline-block;
     transition-property: transform, opacity, background;
-    transition: var(--ease-slow), var(--ease-slow), var(--bouncy);
+    transition: var(--ease-slow), var(--ease-slow), var(--ease-slow);
   }
   
   .nav-links a {
@@ -894,10 +805,6 @@ section .container {
 
     .hero .container-large {
     width: 100%;
-  }
-
-  .hero img {
-    height: 70vh;
   }
 
   .title {
