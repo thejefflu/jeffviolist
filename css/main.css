@@ -95,8 +95,8 @@ html, body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -35%);
-  font-size: max(min(40vw, 65vh), 27rem);
+  transform: translate(-50%, -37.5%);
+  font-size: max(min(40vw, 55vh), 27rem);
   width: 100%;
   letter-spacing: -2%;
   text-align: center;
@@ -177,7 +177,7 @@ h3 {
 }
 
 .dark h1 {
-  max-width: 11ch;
+  max-width: 11.75ch;
   margin-bottom: 0.25em;
 }
 
@@ -287,8 +287,9 @@ nav a {
 .hero img {
   width: 100%;
   object-fit: cover;
-  height: 82vh;
+  height: 83vh;
   padding-top: 5em;
+  object-position: center;
 }
 
 .cutout {
@@ -531,7 +532,7 @@ section .container {
 }
 
 .flex .paragraphs {
-  max-width: 66.5ch;
+  max-width: 66.6ch;
 }
 
 .flex-text {
