@@ -95,7 +95,7 @@ html, body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -37.5%);
+  transform: translate(-50%, -35%);
   font-size: max(min(40vw, 55vh), 27rem);
   width: 100%;
   letter-spacing: -2%;
@@ -287,7 +287,7 @@ nav a {
 .hero img {
   width: 100%;
   object-fit: cover;
-  height: 83vh;
+  height: calc(.89 * (100vh - 5em));
   padding-top: 5em;
   object-position: center;
 }
