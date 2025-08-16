@@ -177,7 +177,7 @@ var navMenu = document.getElementById("nav-menu");
 
 window.addEventListener("scroll", function() {
   var wordmark = document.querySelector('.wordmark');
-  wordmark.classList.toggle("active", window.scrollY > 700);
+  wordmark.classList.toggle("active", window.scrollY > 600);
 })
 
 

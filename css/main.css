@@ -331,6 +331,7 @@ nav a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 2em;
 }
 
 .content {
@@ -537,14 +538,14 @@ section .container {
 
 .flex-text {
   display: flex;
-  gap: 6em;
+  gap: 4em;
   row-gap: 4em;
   flex-wrap: wrap;
   margin-top: 6em;
 }
 
 .flex-text div {
-  width: calc(50% - 3em);
+  width: calc(50% - 2em);
 }
 
 .spacing {
@@ -804,12 +805,12 @@ section .container {
     margin-top: 2em;
   }
 
-    .hero .container-large {
+  .hero .container-large {
     width: 100%;
   }
 
   .title {
-    font-size: 21vh;
+    font-size: 22vh;
     -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
     bottom: 0.375em;
@@ -889,6 +890,14 @@ section .container {
   .flex-text div {
     width: 100%;
     margin-bottom: 4em;
+  }
+
+  .services .centered {
+    text-align: left;
+  }
+
+  .services .centered .divider {
+    margin-left: unset;
   }
 
   .accordion-column,
