@@ -106,11 +106,8 @@ html, body {
 
 .subtitle {
   text-align: center;
-  margin-top: 1em;
-}
-
-.subtitle.alt {
-  display: none;
+  max-width: 43ch;
+  margin: 1em auto 0 auto;
 }
 
 h1 {
@@ -640,10 +637,6 @@ section .container {
 }
 
 @media screen and (max-width: 50em) { /* medium-width devices */
-  .title {
-    font-size: 35vw;
-  }
-
   .hero img {
     height: 65vh;
   }
@@ -833,14 +826,6 @@ section .container {
 }
 
 @media screen and (max-width: 45em) { /* small-width devices: collapse about grid */
-  .subtitle:not(.alt) {
-    display: none;
-  }
-
-  .subtitle.alt {
-    display: block;
-  }
-
   section .container,
   .container-large {
     padding: 6em 0;
