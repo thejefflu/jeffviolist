@@ -497,11 +497,14 @@ section .container {
 .grid a {
   transform: scale(0.8);
   transition: var(--ease-fast);
+  max-width: 25%;
 }
 
 .grid a img {
   display: block;
   margin: 0 auto;
+  object-fit: cover;
+  max-width: 100%;
 }
 
 .accordion-grid {
@@ -822,6 +825,10 @@ section .container {
     font-size: 3.5rem;
     letter-spacing: -2%;
     line-height: 125%; */
+  }
+
+  .grid a {
+      max-width: 40%;
   }
 }
 
