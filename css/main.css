@@ -45,6 +45,7 @@
   --ease-fast: 0.375s ease;
   --bouncy: 0.5s cubic-bezier(0.5, 1.6, 0.4, 0.7);
   --bouncy-timeless: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+  --bezier: 0.75s cubic-bezier(0.62, 0.26, 0.12, 0.98);
 
   --instagram: #D300C5;
 }
@@ -106,7 +107,7 @@ html, body {
 
 .subtitle {
   text-align: center;
-  max-width: 43ch;
+  max-width: 48ch;
   margin: 1em auto 0 auto;
 }
 
@@ -121,7 +122,7 @@ h1 {
 h2 {
   font-family: Maltiner Display, "akzidenz-grotesk-next-extend", sans-serif;
   letter-spacing: -2%;
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   line-height: 1.15;
   margin-bottom: 0.1em;
 }
@@ -179,15 +180,46 @@ h3 {
 }
 
 .testimonial h1 {
-  font-size: 5rem;
+  font-size: 4.5rem;
+  max-width: 17ch;
+}
+
+.guarantee h1 {
+  margin-bottom: 0.125em;
+}
+
+.guarantee .label {
+  margin-bottom: 3em;
+}
+
+.portfolio p {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.label.heading {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 3em;
+  font-weight: 500;
+}
+
+.gray {
+  color: var(--gray);
 }
 
 .bold {
   font-weight: 500;
 }
 
-.gray {
-  color: var(--gray);
+sup {
+  font-size: 0.625rem;
+}
+
+.disclaimer {
+  font-style: italic;
+  margin-top: 1em;
+  font-size: 0.875rem;
 }
 
 .next {
@@ -199,6 +231,92 @@ h3 {
 .contact p {
   max-width: 50ch;
   margin-bottom: 1em;
+}
+
+.card-content {
+  display: flex;
+  gap: 0em;
+}
+
+.card-content * {
+    color: var(--background);
+}
+
+.card-content .vertical-line {
+  height: 4.25em;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  width: 0;
+  overflow: hidden;
+  transition: var(--bezier);
+  background-color: #B1A5A1;
+}
+
+.card-content .card-text {
+  height: 0;
+  overflow: hidden;
+  transition: var(--bezier);
+  width: 0;
+  transform: translateY(3em);
+  white-space: nowrap;
+}
+
+.card-text .label {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.card img {
+  transform: scale(1);
+  transition: var(--bezier);
+}
+
+.card .card-content {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: var(--bezier);
+}
+
+.card-content .card-text .label {
+  margin-bottom: 0.25em;
+  text-align: left;
+}
+
+.active img {
+  transform: scale(1.2);
+}
+
+.active .card-content {
+  gap: 2.5em;
+}
+
+.active .card-content .vertical-line {
+  transform: scaleY(1);
+  width: 2px;
+}
+
+.active .card-content .card-text {
+  height: 4.5em;
+  transform: translateY(0);
+}
+
+.active.weddings .card-content .card-text {
+    width: 37.4ch;
+}
+
+.active.events .card-content .card-text {
+    width: 29.4ch;
+}
+
+.active.venues .card-content .card-text {
+    width: 22.8ch;
+}
+
+.video .label {
+  text-align: center;
+  margin-top: 1em;
 }
 
 /* .highlight {
@@ -312,8 +430,21 @@ nav a {
   margin-right: auto;
 }
 
-.flex img {
+.bio .flex img {
   width: 25em;
+  aspect-ratio: 5/8;
+  object-fit: cover;
+}
+
+.portfolio .video {
+  flex: 1 1 30%;
+  min-width: 20em;
+}
+
+.portfolio video {
+  width: 100%;
+  aspect-ratio: 5/8;
+  object-fit: cover;
 }
 
 /* accordions */
@@ -460,6 +591,10 @@ section .container {
   margin: 0 auto;
 }
 
+section .container.no-space {
+  padding-top: 2em;
+}
+
 .container-image {
   position: relative;
 }
@@ -527,7 +662,6 @@ section .container {
 
 .flex {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   gap: 6em;
 }
@@ -541,11 +675,56 @@ section .container {
   gap: 4em;
   row-gap: 4em;
   flex-wrap: wrap;
-  margin-top: 6em;
+  background-color: #EAE4E1;
+  padding: 3.5em;
+}
+
+.flex-video {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  row-gap: 3em;
+  flex-wrap: wrap;
+  margin-top: 5em;
+}
+
+.flex .left {
+  flex: 4;
+}
+
+.flex .text {
+  flex: 7;
 }
 
 .flex-text div {
   width: calc(50% - 2em);
+}
+
+.flex.cards {
+  gap: 1em;
+}
+
+.card {
+  background: linear-gradient(0deg,rgba(0, 0, 0, 0.7) 5%, rgba(0, 0, 0, 0) 50%);
+  display: inline-block;
+  position: relative;
+  transition: all var(--bezier);
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card.active {
+  width: 350%;
+}
+
+.card img {
+  height: max(40em, 40vw);
+  width: 100%;
+  object-fit: cover;
+  z-index: -1;
+  display: block;
+  position: relative;
 }
 
 .spacing {
@@ -639,9 +818,33 @@ section .container {
   }
 }
 
+@media screen and (max-width: 65em) { /* medium-large-width devices */
+  .flex.cards {
+    flex-direction: column;
+  }
+
+  .card.active {
+    width: 100%;
+  }
+
+  .grid a {
+    max-width: 30%;
+  }
+
+  .flex.guarantee {
+    flex-direction: column;
+    gap: 2em;
+  }
+}
+
 @media screen and (max-width: 50em) { /* medium-width devices */
+  .hero .container-image {
+    overflow: hidden;
+  }
+  
   .hero img {
     height: 65vh;
+    transform: scale(1.25);
   }
 
   .grid .container a {
@@ -816,8 +1019,8 @@ section .container {
   }
 
   .subtitle {
-    max-width: calc(100% - 4em);
-    margin-left: auto;
+    max-width: 47ch;
+    margin-left: 2em;
     margin-right: auto;
     text-align: left;
     font-size: 1.125rem;
@@ -827,12 +1030,23 @@ section .container {
     line-height: 125%; */
   }
 
+  .grid {
+    gap: 0;
+    row-gap: 1.5em;
+  }
+
   .grid a {
-      max-width: 40%;
+    max-width: 45%;
+  }
+
+  .flex {
+    flex-direction: column;
+    align-items: baseline;
+    gap: 1.5em;
   }
 }
 
-@media screen and (max-width: 45em) { /* small-width devices: collapse about grid */
+@media screen and (max-width: 40em) { /* small-width devices: collapse about grid */
   section .container,
   .container-large {
     padding: 6em 0;
@@ -840,20 +1054,43 @@ section .container {
     width: calc(100% - 4em);
   }
 
+  .hero img {
+    transform: scale(1.1);
+  }
+
   h1 {
     font-size: 3rem;
+  }
+
+  .card.active h1 {
+    margin-bottom: 0.125em;
+  }
+
+  .card h1 {
+    margin-bottom: 0;
   }
 
   .testimonial h1 {
     font-size: 3.5rem;
   }
 
+  .card .card-content {
+    display: block;
+    left: 2em;
+    bottom: 2em;
+    transform: translateX(0);
+  }
+
+  .vertical-line {
+    display: none;
+  }
+
   h2 {
-    font-size: 2.25rem;
+    font-size: 2rem;
   }
 
   h3 {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
 
   .past-performances .container-large {
@@ -868,20 +1105,8 @@ section .container {
     width: 100%;
   }
 
-  .flex {
-    flex-direction: column;
-    align-items: baseline;
-    gap: 1em;
-  }
-
-  .flex-text {
-    display: block;
-    margin: 4em 0;
-  }
-
   .flex-text div {
     width: 100%;
-    margin-bottom: 4em;
   }
 
   .services .centered {
@@ -895,6 +1120,10 @@ section .container {
   .accordion-column,
   .accordion-grid {
     gap: 1.5em;
+  }
+
+  .portfolio .video {
+    min-width: 45%;
   }
 
   .footer p {

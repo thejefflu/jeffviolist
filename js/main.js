@@ -307,3 +307,22 @@ function raf(time) {
 }
 
 requestAnimationFrame(raf);
+
+
+
+// -----------------
+// CARDS
+// -----------------
+
+const cards = document.querySelectorAll(".card");
+
+cards.forEach(card => {
+  card.addEventListener("click", () => {
+    const currentActive = document.querySelector(".card.active");
+    if (currentActive) {
+      currentActive.classList.remove("active");
+    }
+
+    card.classList.add("active");
+  });
+});
