@@ -29,12 +29,11 @@
   --accent-dark: #0E2F39;
   --shadow: #0e2f3924;
   --accent: #77655f;
-  --accent-highlight: #d9c8c2;
-  --accent-light: #eee4e1; 
+  --accent-light: #f3edeb; 
   --gray: #7A6C67;
-  --light-gray: #cfc6c2;
+  --light-gray: #706a68;
   --background: #F8F6F5;
-  --background-accent: #EAE4E1;
+  --background-accent: #f3efeb;
   --background-opaque: #F8F6F5d6;
   --gradient-text: linear-gradient(120deg, var(--text) 0%, var(--text) 100%);
   --gradient-accent: linear-gradient(120deg, var(--text) 0%, var(--text) 100%);
@@ -675,7 +674,7 @@ section .container.no-space {
   gap: 4em;
   row-gap: 4em;
   flex-wrap: wrap;
-  background-color: #EAE4E1;
+  background-color: var(--background-accent);
   padding: 3.5em;
 }
 
@@ -712,6 +711,7 @@ section .container.no-space {
   width: 100%;
   overflow: hidden;
   cursor: pointer;
+  max-height: 70vh;
 }
 
 .card.active {
