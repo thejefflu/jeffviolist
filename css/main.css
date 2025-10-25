@@ -31,7 +31,7 @@
   --accent: #77655f;
   --accent-light: #f3edeb; 
   --gray: #7A6C67;
-  --light-gray: #706a68;
+  --light-gray: #bab7b5;
   --background: #F8F6F5;
   --background-accent: #f3efeb;
   --background-opaque: #F8F6F5d6;
@@ -235,6 +235,11 @@ sup {
 .card-content {
   display: flex;
   gap: 0em;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: var(--bezier);
 }
 
 .card-content * {
@@ -251,13 +256,56 @@ sup {
   background-color: #B1A5A1;
 }
 
-.card-content .card-text {
-  height: 0;
+.card-content .card-text-wrapper {
   overflow: hidden;
+  height: 1.4rem;
+}
+
+.card-content p {
   transition: var(--bezier);
   width: 0;
-  transform: translateY(3em);
   white-space: nowrap;
+  transform: translateY(3em);
+}
+
+.card-content .card-text .label {
+  margin-bottom: 0.25em;
+  text-align: left;
+}
+
+.active .card-content {
+  gap: 2.5em;
+}
+
+.active .card-content .vertical-line {
+  transform: scaleY(1);
+  width: 2px;
+}
+
+.active .card-content p {
+  transform: translateY(0);
+}
+
+.active.weddings .card-content p {
+    width: 37.4ch;
+}
+
+.active.events .card-content p {
+    width: 29.4ch;
+}
+
+.active.venues .card-content p {
+    width: 22.8ch;
+}
+
+.card-content .card-text .card-text-wrapper:nth-child(1) p {
+  transition-delay: 0s;
+}
+.card-content .card-text .card-text-wrapper:nth-child(2) p {
+  transition-delay: 0.1s;
+}
+.card-content .card-text .card-text-wrapper:nth-child(3) p {
+  transition-delay: 0.2s;
 }
 
 .card-text .label {
@@ -270,47 +318,8 @@ sup {
   transition: var(--bezier);
 }
 
-.card .card-content {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: var(--bezier);
-}
-
-.card-content .card-text .label {
-  margin-bottom: 0.25em;
-  text-align: left;
-}
-
 .active img {
   transform: scale(1.2);
-}
-
-.active .card-content {
-  gap: 2.5em;
-}
-
-.active .card-content .vertical-line {
-  transform: scaleY(1);
-  width: 2px;
-}
-
-.active .card-content .card-text {
-  height: 4.5em;
-  transform: translateY(0);
-}
-
-.active.weddings .card-content .card-text {
-    width: 37.4ch;
-}
-
-.active.events .card-content .card-text {
-    width: 29.4ch;
-}
-
-.active.venues .card-content .card-text {
-    width: 22.8ch;
 }
 
 .video .label {
@@ -705,17 +714,19 @@ section .container.no-space {
 
 .card {
   background: linear-gradient(0deg,rgba(0, 0, 0, 0.7) 5%, rgba(0, 0, 0, 0) 50%);
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: relative;
   transition: all var(--bezier);
   width: 100%;
   overflow: hidden;
   cursor: pointer;
-  max-height: 70vh;
+  max-height: 75vh;
+  flex: 1;
 }
 
 .card.active {
-  width: 350%;
+  flex: 3;
 }
 
 .card img {
@@ -725,6 +736,7 @@ section .container.no-space {
   z-index: -1;
   display: block;
   position: relative;
+  aspect-ratio: 16/9;
 }
 
 .spacing {
