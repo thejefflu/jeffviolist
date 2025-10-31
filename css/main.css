@@ -67,6 +67,7 @@
   font-size: 0.875rem;
   color: var(--text);
   text-wrap: pretty;
+  font-feature-settings: "liga", "calt";
 
   line-height: 1.6;
   -webkit-text-size-adjust: 100%;
@@ -447,6 +448,7 @@ nav a {
 .portfolio .video {
   flex: 1 1 30%;
   min-width: 20em;
+  max-width: calc(50% - 1em);
 }
 
 .portfolio video {
@@ -693,7 +695,7 @@ section .container.no-space {
 
 .flex-video {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1em;
   row-gap: 3em;
   flex-wrap: wrap;

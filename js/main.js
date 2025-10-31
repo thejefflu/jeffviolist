@@ -280,6 +280,16 @@ nav6.addEventListener('click', function() {
   smoothScroll('.scroll-helper-music', 1500);
 });
 
+var nav7 = document.querySelector('.nav-music-3');
+nav7.addEventListener('click', function() {
+  smoothScroll('.scroll-helper-music', 1500);
+});
+
+var nav8 = document.querySelector('.nav-music-4');
+nav8.addEventListener('click', function() {
+  smoothScroll('.scroll-helper-music', 1500);
+});
+
 
 // -----------------
 // PARALLAX
