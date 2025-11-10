@@ -296,7 +296,7 @@ sup {
 }
 
 .active.venues .card-content p {
-    width: 22.8ch;
+    width: 29.4ch;
 }
 
 .card-content .card-text .card-text-wrapper:nth-child(1) p {
@@ -448,7 +448,7 @@ nav a {
 .portfolio .video {
   flex: 1 1 30%;
   min-width: 20em;
-  max-width: calc(50% - 1em);
+  max-width: calc(50% - 0.5em);
 }
 
 .portfolio video {
@@ -841,6 +841,10 @@ section .container.no-space {
     flex-direction: column;
   }
 
+  .card {
+    cursor: default;
+  }
+
   .card.active {
     width: 100%;
   }
@@ -1121,6 +1125,10 @@ section .container.no-space {
 
   .grid a img {
     width: 100%;
+  }
+
+  .flex-text {
+    gap: 2.5em;
   }
 
   .flex-text div {

@@ -330,14 +330,33 @@ requestAnimationFrame(raf);
 // -----------------
 
 const cards = document.querySelectorAll(".card");
+const mediaQuery = window.matchMedia("(max-width: 65em)");
 
+function updateCardBehavior() {
+  if (mediaQuery.matches) {
+    // Small viewport: all cards active
+    cards.forEach(card => card.classList.add("active"));
+  } else {
+    // Large viewport: only clicked card is active
+    cards.forEach(card => card.classList.remove("active"));
+    const firstCard = document.querySelector(".card");
+    if (firstCard) firstCard.classList.add("active");
+  }
+}
+
+// Handle clicks (only if viewport > 65em)
 cards.forEach(card => {
   card.addEventListener("click", () => {
-    const currentActive = document.querySelector(".card.active");
-    if (currentActive) {
-      currentActive.classList.remove("active");
-    }
+    if (mediaQuery.matches) return; // Ignore clicks on small viewports
 
+    const currentActive = document.querySelector(".card.active");
+    if (currentActive) currentActive.classList.remove("active");
     card.classList.add("active");
   });
 });
+
+// Run once on load
+updateCardBehavior();
+
+// Update dynamically when resizing
+mediaQuery.addEventListener("change", updateCardBehavior);
