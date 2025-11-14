@@ -149,6 +149,8 @@ document.querySelectorAll('.accordion').forEach(acc => {
   }
 
   acc.addEventListener('click', () => {
+    if (event.target.closest('a, button, input, textarea, select')) return;
+
     clearTransitionEnd(); // kill old listeners
 
     if (acc.classList.contains('active')) {
@@ -290,6 +292,11 @@ nav8.addEventListener('click', function() {
   smoothScroll('.scroll-helper-music', 1500);
 });
 
+var nav9 = document.querySelector('.nav-contact-1');
+nav9.addEventListener('click', function() {
+  smoothScroll('.scroll-helper-bottom', 1500);
+});
+
 
 // -----------------
 // PARALLAX
@@ -297,7 +304,7 @@ nav8.addEventListener('click', function() {
 
 (function() {
   const hero = document.querySelector('.hero');
-  const speed = 0.4; // smaller = slower movement
+  const speed = 0.2; // smaller = slower movement
 
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
@@ -360,3 +367,12 @@ updateCardBehavior();
 
 // Update dynamically when resizing
 mediaQuery.addEventListener("change", updateCardBehavior);
+
+
+
+// -----------------
+// LOGO TICKER
+// -----------------
+
+var copy = document.querySelector(".logos").cloneNode(true);
+document.querySelector(".logo-ticker").appendChild(copy);
