@@ -376,3 +376,104 @@ mediaQuery.addEventListener("change", updateCardBehavior);
 
 var copy = document.querySelector(".logos").cloneNode(true);
 document.querySelector(".logo-ticker").appendChild(copy);
+
+const tracks = document.querySelectorAll(".logos");
+const ticker = document.querySelector(".logo-ticker");
+
+// Create animations for all tracks
+const animations = [...tracks].map(track =>
+  track.animate(
+    [
+      { transform: "translateX(0)" },
+      { transform: "translateX(-100%)" }
+    ],
+    {
+      duration: 25000,     // normal speed
+      iterations: Infinity,
+      easing: "linear"
+    }
+  )
+);
+
+// Smoothly interpolate the playback rate
+function smoothPlaybackRate(animation, targetRate, duration = 500) {
+  const startRate = animation.playbackRate;
+  const startTime = performance.now();
+
+  function update(now) {
+    const t = Math.min((now - startTime) / duration, 1);
+    const eased = t < 0.5 ? 2*t*t : -1 + (4 - 2*t)*t; 
+    // easeInOutQuad
+
+    animation.updatePlaybackRate(startRate + (targetRate - startRate) * eased);
+
+    if (t < 1) requestAnimationFrame(update);
+  }
+
+  requestAnimationFrame(update);
+}
+
+ticker.addEventListener("mouseenter", () => {
+  animations.forEach(anim => smoothPlaybackRate(anim, 0.5, 500)); 
+  // 0.2 = slow rate, 800ms easing
+});
+
+ticker.addEventListener("mouseleave", () => {
+  animations.forEach(anim => smoothPlaybackRate(anim, 1, 500)); 
+  // back to normal at 800ms easing
+});
+
+
+
+// -----------------
+// TESTIMONIALS
+// -----------------
+
+const testimonials = [
+  {
+    quote: `“Working with Jeff was an outstanding experience. His music was first-class, and he added a great deal to the ceremony.”`,
+    meta: `Yu-Fahn ∙ Sep 2025 Wedding @ Soquel, CA`
+  },
+  {
+    quote: `“All our guests thought he made the ambiance even more special and left a lasting impression on everyone.”`,
+    meta: `Giselle ∙ Oct 2025 Wedding @ Anaheim, CA`
+  }
+];
+
+let index = 0;
+
+const container = document.getElementById("testimonial");
+const quoteEl = document.getElementById("t-quote");
+const metaEl  = document.getElementById("t-meta");
+
+const DISPLAY_MS = 5000;
+const ANIM_MS = 750; // match CSS transition duration
+
+setInterval(() => {
+  // 1) Fade out and slide left
+  container.classList.add("fade-out");
+
+  // 2) After fade-out finishes, swap text and prepare slide-in
+  setTimeout(() => {
+    index = (index + 1) % testimonials.length;
+    quoteEl.textContent = testimonials[index].quote;
+    metaEl.textContent  = testimonials[index].meta;
+
+    // remove the fade-out class (so element is no longer forced left)
+    container.classList.remove("fade-out");
+
+    // add the starting state for entry: hidden and to the right
+    container.classList.add("fade-in");
+
+    // force reflow so the browser registers the starting style
+    void container.offsetWidth;
+
+    // now add the active class to animate to the final visible state
+    container.classList.add("fade-in-active");
+
+    // cleanup the helper classes after animation completes
+    setTimeout(() => {
+      container.classList.remove("fade-in", "fade-in-active");
+    }, ANIM_MS);
+  }, ANIM_MS);
+}, DISPLAY_MS);
