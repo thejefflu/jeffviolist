@@ -446,7 +446,7 @@ const container = document.getElementById("testimonial");
 const quoteEl = document.getElementById("t-quote");
 const metaEl  = document.getElementById("t-meta");
 
-const DISPLAY_MS = 5000;
+const DISPLAY_MS = 6000;
 const ANIM_MS = 750; // match CSS transition duration
 
 setInterval(() => {

@@ -147,6 +147,10 @@ h3 {
   letter-spacing: 0.2rem;
 }
 
+.label {
+  line-height: 1.9;
+}
+
 .wordmark p {
   font-size: 2rem;
   font-family: Maltiner Display;
@@ -607,6 +611,12 @@ section .container {
   max-width: 80em;
   padding: 10em 0;
   margin: 0 auto;
+}
+
+.testimonial {
+  height: 40em;
+  display: flex;
+  align-items: center;
 }
 
 .testimonial .container {
@@ -1096,6 +1106,10 @@ section .container.no-space {
     align-items: start;
     gap: 1.5em;
   }
+
+  .testimonial {
+    height: 45em;
+  }
 }
 
 @media screen and (max-width: 40em) { /* small-width devices: collapse about grid */
@@ -1122,7 +1136,7 @@ section .container.no-space {
     margin-bottom: 0;
   }
 
-  .testimonial h1 {
+  #testimonial h1 {
     font-size: 3.5rem;
   }
 
