@@ -1108,7 +1108,7 @@ section .container.no-space {
   }
 
   .testimonial {
-    height: 45em;
+    height: 40em;
   }
 }
 
@@ -1137,7 +1137,7 @@ section .container.no-space {
   }
 
   #testimonial h1 {
-    font-size: 3.5rem;
+    font-size: 3.25rem;
   }
 
   .card .card-content {
@@ -1178,6 +1178,8 @@ section .container.no-space {
 
   .flex-text {
     gap: 2.5em;
+    /* background-color: var(--background);
+    padding: 0 0 2em 0; */
   }
 
   .flex-text div {

@@ -388,7 +388,7 @@ const animations = [...tracks].map(track =>
       { transform: "translateX(-100%)" }
     ],
     {
-      duration: 25000,     // normal speed
+      duration: 30000,     // normal speed
       iterations: Infinity,
       easing: "linear"
     }
