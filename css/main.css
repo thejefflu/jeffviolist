@@ -141,7 +141,8 @@ h3 {
 
 /* paragraphs */
 .label,
-.footer p {
+.footer p,
+.label a {
   text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 0.2rem;
@@ -173,7 +174,7 @@ h3 {
   margin-bottom: 1em;
 }
 
-.testimonial * {
+.testimonials * {
   color: var(--background);
   margin: 0 auto;
   text-align: center;
@@ -188,14 +189,19 @@ h3 {
   margin-bottom: 0.25em;
 }
 
-#testimonial {
+.testimonials {
   transition: var(--ease-slower);
 }
 
-#testimonial h1 {
-  font-size: 4.5rem;
-  max-width: 30ch;
-  padding-top: 0.5em;
+.testimonials h1 {
+  font-size: 7.5rem;
+  padding-top: 0.25em;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.testimonials p {
+  white-space: nowrap;
 }
 
 .fade-out {
@@ -258,7 +264,7 @@ sup {
 }
 
 .contact p {
-  max-width: 55ch;
+  max-width: 63ch;
   margin-bottom: 1em;
 }
 
@@ -317,11 +323,11 @@ sup {
 }
 
 .active.weddings .card-content p {
-    width: 33.6ch;
+    width: 34ch;
 }
 
 .active.events .card-content p {
-    width: 28.6ch;
+    width: 31.8ch;
 }
 
 .active.venues .card-content p {
@@ -395,6 +401,10 @@ nav a {
     background-position: 100% 100%;
 	transition: var(--ease-fast);
   background-repeat: no-repeat;
+}
+
+.stars i {
+  font-size: 1.25rem;
 }
 
 .primary .inline {
@@ -613,13 +623,12 @@ section .container {
   margin: 0 auto;
 }
 
-.testimonial {
-  height: 40em;
+.testimonials {
   display: flex;
   align-items: center;
 }
 
-.testimonial .container {
+.testimonials .container {
   padding: 7em 0 8.5em 0;
 }
 
@@ -627,6 +636,10 @@ section .container {
   width: calc(100% - 4em);
   padding: 10em 0;
   margin: 0 auto;
+}
+
+.testimonials .container-large {
+  padding: 11em;
 }
 
 .services .container-large {
@@ -649,10 +662,20 @@ section .container.no-space {
   background-color: var(--background-accent);
 }
 
-.testimonial {
+.testimonials {
   background-image: url("/assets/imgs/background.png");
   background-size: cover;
   background-position: center;
+}
+
+.testimonial-ticker,
+.testimonial-container {
+  display: flex;
+  gap: 6em;
+}
+
+.testimonial-container {
+  white-space: nowrap;
 }
 
 .contact {
@@ -914,6 +937,19 @@ section .container.no-space {
     flex-direction: column;
     gap: 2em;
   }
+
+  .testimonials h1 {
+    font-size: 6rem;
+  }
+
+  .testimonials p {
+    white-space: wrap;
+  }
+
+  .testimonial-ticker,
+  .testimonial-container {
+    gap: 5em;
+  }
 }
 
 @media screen and (max-width: 50em) { /* medium-width devices */
@@ -1106,10 +1142,6 @@ section .container.no-space {
     align-items: start;
     gap: 1.5em;
   }
-
-  .testimonial {
-    height: 40em;
-  }
 }
 
 @media screen and (max-width: 40em) { /* small-width devices: collapse about grid */
@@ -1134,10 +1166,6 @@ section .container.no-space {
 
   .card h1 {
     margin-bottom: 0;
-  }
-
-  #testimonial h1 {
-    font-size: 3.25rem;
   }
 
   .card .card-content {
@@ -1194,12 +1222,9 @@ section .container.no-space {
     margin-left: unset;
   }
 
-  .accordion-column {
-    gap: 1.5em;
-  }
-
+  .accordion-column,
   .accordion-grid {
-    gap: 4em;
+    gap: 1.5em;
   }
 
   .portfolio .video {

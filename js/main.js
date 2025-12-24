@@ -429,51 +429,30 @@ ticker.addEventListener("mouseleave", () => {
 // TESTIMONIALS
 // -----------------
 
-const testimonials = [
-  {
-    quote: `“Working with Jeff was an outstanding experience. His music was first-class, and he added a great deal to the ceremony.”`,
-    meta: `Yu-Fahn ∙ Sep 2025 Wedding @ Soquel, CA`
-  },
-  {
-    quote: `“All our guests thought he made the ambiance even more special and left a lasting impression on everyone.”`,
-    meta: `Giselle ∙ Oct 2025 Wedding @ Anaheim, CA`
-  }
-];
+var copy = document.querySelector(".testimonial-container").cloneNode(true);
+document.querySelector(".testimonial-ticker").appendChild(copy);
 
-let index = 0;
+const container = document.querySelector(".testimonial-ticker");
 
-const container = document.getElementById("testimonial");
-const quoteEl = document.getElementById("t-quote");
-const metaEl  = document.getElementById("t-meta");
+function onScroll() {
+  const rect = container.getBoundingClientRect();
+  const viewportHeight = window.innerHeight;
 
-const DISPLAY_MS = 6000;
-const ANIM_MS = 750; // match CSS transition duration
+  // How far the container has entered the viewport (0 → 1)
+  const progress = Math.min(
+    Math.max((viewportHeight - rect.top) / (viewportHeight + rect.width), 0),
+    1
+  );
 
-setInterval(() => {
-  // 1) Fade out and slide left
-  container.classList.add("fade-out");
+  // How far we can scroll horizontally
+  const maxTranslate =
+    container.scrollWidth - container.clientWidth;
 
-  // 2) After fade-out finishes, swap text and prepare slide-in
-  setTimeout(() => {
-    index = (index + 1) % testimonials.length;
-    quoteEl.textContent = testimonials[index].quote;
-    metaEl.textContent  = testimonials[index].meta;
+  // Map vertical progress → horizontal movement
+  const translateX = -progress * maxTranslate;
 
-    // remove the fade-out class (so element is no longer forced left)
-    container.classList.remove("fade-out");
+  container.style.transform = `translateX(${translateX}px)`;
+}
 
-    // add the starting state for entry: hidden and to the right
-    container.classList.add("fade-in");
-
-    // force reflow so the browser registers the starting style
-    void container.offsetWidth;
-
-    // now add the active class to animate to the final visible state
-    container.classList.add("fade-in-active");
-
-    // cleanup the helper classes after animation completes
-    setTimeout(() => {
-      container.classList.remove("fade-in", "fade-in-active");
-    }, ANIM_MS);
-  }, ANIM_MS);
-}, DISPLAY_MS);
+window.addEventListener("scroll", onScroll);
+window.addEventListener("resize", onScroll);
