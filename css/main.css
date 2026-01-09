@@ -449,6 +449,30 @@ nav a {
   z-index: 1;
 }
 
+.badges {
+  position: absolute;
+  bottom: -4.5em;
+  right: 5em;
+  display: flex;
+}
+
+.badges a:first-child {
+  z-index: 1;
+}
+
+.badge {
+  margin-left: -1.5em;
+  rotate: 14deg;
+  max-height: 9em;
+  max-width: 9em;
+}
+
+.badge img {
+  max-height: 9em;
+  max-width: 9em;
+  padding: 0;
+}
+
 .divider {
   height: 1px;
   background-color: var(--gray);
@@ -663,7 +687,7 @@ section .container.no-space {
 }
 
 .testimonials {
-  background-image: url("/assets/imgs/background.png");
+  background-image: url("/assets/imgs/4-testimonials/bg.png");
   background-size: cover;
   background-position: center;
 }
@@ -679,7 +703,7 @@ section .container.no-space {
 }
 
 .contact {
-  background-image: url("/assets/imgs/contact.png");
+  background-image: url("/assets/imgs/7-contact/bg.png");
   background-size: cover;
   background-position: center;
 }
@@ -1212,6 +1236,17 @@ section .container.no-space {
 
   .flex-text div {
     width: 100%;
+  }
+
+  .badges {
+    left: 1.5em; 
+    right: 0; 
+    margin-inline: auto; 
+    width: fit-content;
+  }
+
+  .badge {
+    margin-left: -1.5em;
   }
 
   .services .centered {
