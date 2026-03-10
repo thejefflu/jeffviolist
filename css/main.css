@@ -115,7 +115,7 @@ video {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -35%);
-  font-size: max(min(40vw, 55vh), 27rem);
+  font-size: max(min(44vw, 57vh), 27rem);
   width: 100%;
   letter-spacing: -2%;
   text-align: center;
@@ -220,8 +220,8 @@ h3 {
 
 .testimonials h1 {
   font-size: 7.5rem;
-  padding-top: 0.25em;
-  margin-bottom: 0;
+  padding-top: 0.375em;
+  margin-bottom: 0.1em;
   white-space: nowrap;
 }
 
@@ -283,7 +283,7 @@ sup {
 
 .disclaimer {
   font-style: italic;
-  margin-top: 1em;
+  margin-top: 1.5em;
   font-size: 0.875rem;
 }
 
@@ -306,7 +306,7 @@ sup {
   display: flex;
   gap: 0em;
   position: absolute;
-  bottom: 0;
+  bottom: -1em;
   left: 50%;
   transform: translateX(-50%);
   transition: var(--bezier);
@@ -357,11 +357,11 @@ sup {
 }
 
 .active.weddings .card-content p {
-    width: 34ch;
+    width: 37.4ch;
 }
 
 .active.events .card-content p {
-    width: 31.8ch;
+    width: 30.4ch;
 }
 
 .active.sessions .card-content p {
@@ -371,9 +371,11 @@ sup {
 .card-content .card-text .card-text-wrapper:nth-child(1) p {
   transition-delay: 0s;
 }
+
 .card-content .card-text .card-text-wrapper:nth-child(2) p {
   transition-delay: 0.1s;
 }
+
 .card-content .card-text .card-text-wrapper:nth-child(3) p {
   transition-delay: 0.2s;
 }
@@ -383,13 +385,8 @@ sup {
   font-weight: 500;
 }
 
-.card img {
-  transform: scale(1);
-  transition: var(--bezier);
-}
-
-.active img {
-  transform: scale(1.2);
+.card.active img {
+  transform: scale(1.1);
 }
 
 .video .label {
@@ -481,6 +478,7 @@ nav a {
   height: calc(.89 * (100vh - 5em));
   margin-top: 5em;
   object-position: center;
+  transform: scale(1);
 }
 
 .cutout {
@@ -539,7 +537,7 @@ nav a {
 }
 
 .bio .flex img {
-  width: 25em;
+  width: 27em;
   aspect-ratio: 5/8;
   object-fit: cover;
 }
@@ -577,8 +575,11 @@ nav a {
 }
 
 .content p {
+  padding: 1em 0 1.5em 0;
+}
+
+.multi-paragraph p:not(:first-child) {
   padding-top: 0.5em;
-  padding-bottom: 1.5em;
 }
 
 .multi-paragraph p:not(:last-child) {
@@ -852,7 +853,7 @@ section .container.no-space {
 .accordion-column {
   display: flex;
   flex-direction: column;
-  gap: 2em;
+  gap: 2.25em;
 }
 
 .flex {
@@ -908,6 +909,7 @@ section .container.no-space {
   width: 100%;
   overflow: hidden;
   cursor: pointer;
+  height: max(40em, 40vw);
   max-height: 75vh;
   flex: 1;
 }
@@ -917,13 +919,12 @@ section .container.no-space {
 }
 
 .card img {
-  height: max(40em, 40vw);
   width: 100%;
+  height: 105%;
   object-fit: cover;
   z-index: -1;
-  display: block;
-  position: relative;
-  aspect-ratio: 16/9;
+  transform: scale(1);
+  transition: var(--bezier);
 }
 
 .spacing {
@@ -1055,8 +1056,8 @@ section .container.no-space {
     width: 100%;
   }
 
-  .card-content {
-    bottom: -1em;
+  .card img {
+    object-position: center 25%;
   }
 
   .flex.guarantee {
